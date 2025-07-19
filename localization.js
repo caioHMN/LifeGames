@@ -52,7 +52,7 @@ const LANGUAGES = {
         "patterns_title": "Choose a Pattern",
 
         "live_cells_label": "Live cells: ",
-        "instructions_title": "Conway's Game of Life Instructions",
+        "instructions_title": "Instructions",
         "instructions_intro": "Welcome to Conway's Game of Life!",
         "rules_title": "Rules:",
         "rule_1": "- A living cell with fewer than two living neighbours dies.",
