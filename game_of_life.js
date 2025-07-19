@@ -266,19 +266,35 @@ function updateAllTexts() {
     if (!document.getElementById("patterns-popup").classList.contains("hidden")) showPatternsPopup();
 }
 
+// ...existing code...
+
 // --- Interação com o canvas ---
-CANVAS.addEventListener("click", (e) => {
+function handleCanvasInput(x, y) {
     const rect = CANVAS.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const c = Math.floor(x / CELL_SIZE);
-    const r = Math.floor(y / CELL_SIZE);
+    const c = Math.floor((x - rect.left) / CELL_SIZE);
+    const r = Math.floor((y - rect.top) / CELL_SIZE);
     if (r >= 0 && r < rows && c >= 0 && c < cols) {
         grid[r][c] = grid[r][c] ? 0 : 1;
         drawGrid();
         updateInfoBar();
     }
+}
+
+CANVAS.addEventListener("click", (e) => {
+    handleCanvasInput(e.clientX, e.clientY);
 });
+
+// Suporte a toque em dispositivos móveis
+CANVAS.addEventListener("touchstart", (e) => {
+    if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        handleCanvasInput(touch.clientX, touch.clientY);
+    }
+    // Evita scroll ao tocar no canvas
+    e.preventDefault();
+}, { passive: false });
+
+// ...existing code...
 
 // --- Inicialização ---
 function start() {
