@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Vida</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="title">Jogo da Vida</h1>
+        <button id="lang-btn" title="Trocar idioma">🌐 EN/BR</button>
+    </header>
+
+    <main>
+        <div id="controls">
+            <button id="toggle-btn">Iniciar</button>
+            <button id="clear-btn">Limpar</button>
+            <button id="save-btn">Salvar</button>
+            <button id="load-btn">Restaurar</button>
+            <button id="patterns-btn">Padrões</button>
+            <button id="instructions-btn">Instruções</button>
+            <label id="fps-label" for="fps-slider">FPS: <span id="fps-value">10</span></label>
+            <input type="range" id="fps-slider" min="1" max="60" value="10">
+        </div>
+        <canvas id="game-canvas" width="780" height="520"></canvas>
+        <div id="info-bar">
+            <span id="generation-label">Geração: 0</span>
+            <span id="status-label">Status: Pausado</span>
+            <span id="live-cells-label">Vivas: 0</span>
+        </div>
+    </main>
+
+    <!-- Popup de instruções -->
+    <div id="instructions-popup" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="instructions-title">Instruções</h2>
+            <div id="instructions-text"></div>
+            <button id="show-qr-btn">Mostrar QR Code</button>
+            <button id="close-instructions-btn">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Popup de padrões -->
+    <div id="patterns-popup" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="patterns-title">Padrões</h2>
+            <div id="patterns-list"></div>
+            <button id="close-patterns-btn">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Popup de QR Code -->
+    <div id="qr-popup" class="modal hidden">
+    <div class="modal-content">
+        <h2 id="qr-title">Código QR</h2>
+        <div id="qr-code">
+            <img src="qrb.png" alt="QR Code" style="width: 200px; height: 200px;">
+        </div>
+        <button id="close-qr-btn">Fechar</button>
+    </div>
+</div>
+
+    <script src="patterns.js"></script>
+    <script src="localization.js"></script>
+    <script src="game_of_life.js"></script>    
+</body>
+</html>
