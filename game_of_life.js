@@ -292,7 +292,7 @@ CANVAS.addEventListener("touchstart", (e) => {
     }
     // Evita scroll ao tocar no canvas
     e.preventDefault();
-}, { passive: false });
+}, { passive: true });
 
 // ...existing code...
 
